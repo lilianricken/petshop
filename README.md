@@ -1,5 +1,7 @@
-# petshop
+# Petshop
 Projeto de treinamento. Programa de estágio Wipro 2019
+
+
 Escopo: Fernanda é professora de matemática e gosta bastante de animais, recentemente resolveu largar o trabalho como professora pra se dedicar a sua grande paixão: cuidar de animais. Fernanda gastou quase todas as suas economias para abrir um pet shop. Apesar da pouca experiência na área, Fernanda criou algumas estratégias para organizar seu serviço e fornecer um preço justo a seus clientes, sempre focando na sua capacidade e garantindo a qualidade do atendimento. Essa foi a estratégia que fernanda elaborou para tocar seu negócio:
 •	Cada serviço demora determinado tempo para ser executado e o tempo varia de acordo com o porte e raça do animal, portando o valor também varia.
 o	Ex: Banho em um cachorro de porte médio demora 30 min. R$ 45

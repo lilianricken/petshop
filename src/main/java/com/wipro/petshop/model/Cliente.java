@@ -32,6 +32,9 @@ public class Cliente {
     @OneToMany(targetEntity = Pet.class)
     private List<Pet> pets = new ArrayList<>();
 
+    public Cliente() {
+    }
+
     public int getID_cliente() {
         return ID_cliente;
     }

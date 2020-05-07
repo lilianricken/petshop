@@ -1,4 +1,4 @@
-package com.wipro.petshop.model;
+package com.wipro.petshop.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -20,7 +20,7 @@ public class Pet {
     @NotBlank(message = "Campo Obrigatório")
     private String pelagem;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     private Cliente cliente;
 
     public Pet() {
@@ -81,4 +81,5 @@ public class Pet {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
 }

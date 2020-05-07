@@ -1,12 +1,8 @@
-package com.wipro.petshop.model;
+package com.wipro.petshop.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Servico {
@@ -21,8 +17,8 @@ public class Servico {
     @NotBlank(message = "Campo Obrigatório")
     private float val_unit;
 
-    @ManyToMany(targetEntity = OrdemServico.class)
-    private List<OrdemServico> ordemServicos = new ArrayList<>();
+    @ManyToMany(mappedBy = "servicos", cascade = CascadeType.ALL)
+    private Set<OrdemServico> ordemServicos;
 
     public Servico() {
     }
@@ -59,11 +55,11 @@ public class Servico {
         this.val_unit = val_unit;
     }
 
-    public List<OrdemServico> getOrdemServicos() {
+    public Set<OrdemServico> getOrdemServicos() {
         return ordemServicos;
     }
 
-    public void setOrdemServicos(List<OrdemServico> ordemServicos) {
+    public void setOrdemServicos(Set<OrdemServico> ordemServicos) {
         this.ordemServicos = ordemServicos;
     }
 }

@@ -1,11 +1,10 @@
-package com.wipro.petshop.model;
+package com.wipro.petshop.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.sql.Time;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class OrdemServico {
@@ -33,8 +32,8 @@ public class OrdemServico {
     private Cliente cliente;
     @ManyToOne
     private Funcionario funcionario;
-    @ManyToMany(targetEntity = Servico.class)
-    private List<Servico> servicos = new ArrayList<>();
+    @ManyToMany
+    private Set<Servico> servicos;
 
     public OrdemServico() {
     }
@@ -127,11 +126,11 @@ public class OrdemServico {
         this.funcionario = funcionario;
     }
 
-    public List<Servico> getServicos() {
+    public Set<Servico> getServicos() {
         return servicos;
     }
 
-    public void setServicos(List<Servico> servicos) {
+    public void setServicos(Set<Servico> servicos) {
         this.servicos = servicos;
     }
 }

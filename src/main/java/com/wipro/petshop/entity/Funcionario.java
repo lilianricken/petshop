@@ -1,4 +1,4 @@
-package com.wipro.petshop.model;
+package com.wipro.petshop.entity;
 
 import org.hibernate.validator.constraints.UniqueElements;
 
@@ -22,7 +22,7 @@ public class Funcionario {
     @NotBlank(message = "Campo Obrigatório")
     private String senha;
 
-    @OneToMany(targetEntity = OrdemServico.class)
+    @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL)
     private List<OrdemServico> ordemServicos = new ArrayList<>();
 
     public Funcionario() {

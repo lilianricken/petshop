@@ -1,6 +1,6 @@
-package com.wipro.petshop.persistence;
+package com.wipro.petshop.repository;
 
-import com.wipro.petshop.model.Pet;
+import com.wipro.petshop.entity.Pet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

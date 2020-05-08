@@ -2,54 +2,49 @@ package com.wipro.petshop.entity;
 
 import org.hibernate.validator.constraints.UniqueElements;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ID_funcionario;
+    private int id;
     @NotBlank(message = "Campo Obrigatório")
-    private String nome_func;
+    private String nome;
     @NotBlank(message = "Campo Obrigatório")
-    private String sobrenome_func;
+    private String sobrenome;
     @NotBlank(message = "Campo Obrigatório")
     @UniqueElements
     private String login;
     @NotBlank(message = "Campo Obrigatório")
     private String senha;
 
-    @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL)
-    private List<OrdemServico> ordemServicos = new ArrayList<>();
-
-    public Funcionario() {
+    public int getId() {
+        return id;
     }
 
-    public int getID_funcionario() {
-        return ID_funcionario;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setID_funcionario(int ID_funcionario) {
-        this.ID_funcionario = ID_funcionario;
+    public String getNome() {
+        return nome;
     }
 
-    public String getNome_func() {
-        return nome_func;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void setNome_func(String nome_func) {
-        this.nome_func = nome_func;
+    public String getSobrenome() {
+        return sobrenome;
     }
 
-    public String getSobrenome_func() {
-        return sobrenome_func;
-    }
-
-    public void setSobrenome_func(String sobrenome_func) {
-        this.sobrenome_func = sobrenome_func;
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
 
     public String getLogin() {
@@ -66,13 +61,5 @@ public class Funcionario {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public List<OrdemServico> getOrdemServicos() {
-        return ordemServicos;
-    }
-
-    public void setOrdemServicos(List<OrdemServico> ordemServicos) {
-        this.ordemServicos = ordemServicos;
     }
 }

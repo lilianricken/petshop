@@ -1,13 +1,19 @@
 package com.wipro.petshop.entity;
 
-import javax.persistence.*;
+import com.wipro.petshop.entity.util.Pelagem;
+import com.wipro.petshop.entity.util.Porte;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ID_pet;
+    private int id;
 
     @NotBlank(message = "Campo Obrigatório")
     private String nome;
@@ -16,22 +22,16 @@ public class Pet {
     @NotBlank(message = "Campo Obrigatório")
     private String raca;
     @NotBlank(message = "Campo Obrigatório")
-    private String porte;
+    private Porte porte;
     @NotBlank(message = "Campo Obrigatório")
-    private String pelagem;
+    private Pelagem pelagem;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    private Cliente cliente;
-
-    public Pet() {
+    public int getId() {
+        return id;
     }
 
-    public int getID_pet() {
-        return ID_pet;
-    }
-
-    public void setID_pet(int ID_pet) {
-        this.ID_pet = ID_pet;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -58,28 +58,19 @@ public class Pet {
         this.raca = raca;
     }
 
-    public String getPorte() {
+    public Porte getPorte() {
         return porte;
     }
 
-    public void setPorte(String porte) {
+    public void setPorte(Porte porte) {
         this.porte = porte;
     }
 
-    public String getPelagem() {
+    public Pelagem getPelagem() {
         return pelagem;
     }
 
-    public void setPelagem(String pelagem) {
+    public void setPelagem(Pelagem pelagem) {
         this.pelagem = pelagem;
     }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
 }

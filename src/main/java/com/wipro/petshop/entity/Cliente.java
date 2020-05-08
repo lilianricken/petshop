@@ -1,23 +1,22 @@
-package com.wipro.petshop.model;
+package com.wipro.petshop.entity;
 
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int ID_cliente;
+    private int id;
 
     @NotBlank(message = "Campo Obrigatório")
     private String nome;
     @NotBlank(message = "Campo Obrigatório")
-    private String sobranome;
+    private String sobrenome;
     @NotBlank(message = "Campo Obrigatório")
     @UniqueElements
     private int cpf;
@@ -29,18 +28,16 @@ public class Cliente {
     @NotBlank(message = "Campo Obrigatório")
     private int telefone;
 
-    @OneToMany(targetEntity = Pet.class)
-    private List<Pet> pets = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    @NotBlank(message = "Campo Obrigatório")
+    private Set<Pet> pets;
 
-    public Cliente() {
+    public int getId() {
+        return id;
     }
 
-    public int getID_cliente() {
-        return ID_cliente;
-    }
-
-    public void setID_cliente(int ID_cliente) {
-        this.ID_cliente = ID_cliente;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -51,12 +48,12 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getSobranome() {
-        return sobranome;
+    public String getSobrenome() {
+        return sobrenome;
     }
 
-    public void setSobranome(String sobranome) {
-        this.sobranome = sobranome;
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
 
     public int getCpf() {
@@ -91,11 +88,11 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public List<Pet> getPets() {
+    public Set<Pet> getPets() {
         return pets;
     }
 
-    public void setPets(List<Pet> pets) {
+    public void setPets(Set<Pet> pets) {
         this.pets = pets;
     }
 }

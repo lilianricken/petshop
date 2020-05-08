@@ -1,5 +1,7 @@
 package com.wipro.petshop.entity;
 
+import com.wipro.petshop.entity.util.Status;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.sql.Time;
@@ -10,24 +12,22 @@ import java.util.Set;
 public class OrdemServico {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id_ordem;
+    private long id;
     @NotBlank(message = "Campo Obrigatório")
     private Date dia;
     @NotBlank(message = "Campo Obrigatório")
-    private Time hora_init;
+    private Time horaInicial;
     @NotBlank(message = "Campo Obrigatório")
-    private Time hora_entr;
+    private Time horaEntrega;
     @NotBlank(message = "Campo Obrigatório")
-    private Time hora_ret;
+    private Time horaRetirada;
     @NotBlank(message = "Campo Obrigatório")
     private boolean pagamento;
     @NotBlank(message = "Campo Obrigatório")
-    private String statusServico;
+    private Status status;
     @NotBlank(message = "Campo Obrigatório")
     private float valor;
 
-    @ManyToOne
-    private Compra compra;
     @ManyToOne
     private Cliente cliente;
     @ManyToOne
@@ -35,15 +35,12 @@ public class OrdemServico {
     @ManyToMany
     private Set<Servico> servicos;
 
-    public OrdemServico() {
+    public long getId() {
+        return id;
     }
 
-    public long getId_ordem() {
-        return id_ordem;
-    }
-
-    public void setId_ordem(long id_ordem) {
-        this.id_ordem = id_ordem;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Date getDia() {
@@ -54,28 +51,28 @@ public class OrdemServico {
         this.dia = dia;
     }
 
-    public Time getHora_init() {
-        return hora_init;
+    public Time getHoraInicial() {
+        return horaInicial;
     }
 
-    public void setHora_init(Time hora_init) {
-        this.hora_init = hora_init;
+    public void setHoraInicial(Time horaInicial) {
+        this.horaInicial = horaInicial;
     }
 
-    public Time getHora_entr() {
-        return hora_entr;
+    public Time getHoraEntrega() {
+        return horaEntrega;
     }
 
-    public void setHora_entr(Time hora_entr) {
-        this.hora_entr = hora_entr;
+    public void setHoraEntrega(Time horaEntrega) {
+        this.horaEntrega = horaEntrega;
     }
 
-    public Time getHora_ret() {
-        return hora_ret;
+    public Time getHoraRetirada() {
+        return horaRetirada;
     }
 
-    public void setHora_ret(Time hora_ret) {
-        this.hora_ret = hora_ret;
+    public void setHoraRetirada(Time horaRetirada) {
+        this.horaRetirada = horaRetirada;
     }
 
     public boolean isPagamento() {
@@ -86,12 +83,12 @@ public class OrdemServico {
         this.pagamento = pagamento;
     }
 
-    public String getStatusServico() {
-        return statusServico;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setStatusServico(String statusServico) {
-        this.statusServico = statusServico;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public float getValor() {
@@ -100,14 +97,6 @@ public class OrdemServico {
 
     public void setValor(float valor) {
         this.valor = valor;
-    }
-
-    public Compra getCompra() {
-        return compra;
-    }
-
-    public void setCompra(Compra compra) {
-        this.compra = compra;
     }
 
     public Cliente getCliente() {

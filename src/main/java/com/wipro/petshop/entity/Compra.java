@@ -8,31 +8,28 @@ import java.util.Set;
 public class Compra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_compra;
+    private long id;
 
     @NotBlank(message = "Campo Obrigatório")
-    private float val_total;
+    private float valorTotal;
 
-    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<OrdemServico> ordemServicos;
 
-    public Compra() {
+    public long getId() {
+        return id;
     }
 
-    public long getId_compra() {
-        return id_compra;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setId_compra(long id_compra) {
-        this.id_compra = id_compra;
+    public float getValorTotal() {
+        return valorTotal;
     }
 
-    public float getVal_total() {
-        return val_total;
-    }
-
-    public void setVal_total(float val_total) {
-        this.val_total = val_total;
+    public void setValorTotal(float valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     public Set<OrdemServico> getOrdemServicos() {

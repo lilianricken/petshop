@@ -3,37 +3,42 @@ package com.wipro.petshop.controller;
 import com.wipro.petshop.entity.Funcionario;
 import com.wipro.petshop.service.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
-@RequestMapping("/compra")
+@RequestMapping("/funcionario")
 public class FuncionarioController {
 
     @Autowired
     private FuncionarioService funcionarioService;
 
     @GetMapping
-    public Iterable<Funcionario> findAll() {
-        return funcionarioService.findAll();
+    public ResponseEntity<Iterable<Funcionario>> findAll() {
+        return ResponseEntity.ok(funcionarioService.findAll());
     }
 
-    @GetMapping("/{id}")
-    public Funcionario findById(@PathVariable int id) {
-        return funcionarioService.readFuncionarioID(id);
+    @GetMapping("/funcionario/{id}")
+    public ResponseEntity<Funcionario> findById(@PathVariable("id") int id) {
+        return ResponseEntity.ok(funcionarioService.readFuncionarioID(id));
     }
 
     @PostMapping
-    public Funcionario createFuncionario(@RequestBody Funcionario funcionario) {
-        return funcionarioService.createFuncionario(funcionario);
+    public ResponseEntity<Funcionario> createFuncionario(@RequestBody @Valid Funcionario funcionario) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(funcionarioService.createFuncionario(funcionario));
     }
 
-    @PutMapping
-    public void updateFuncionario(@RequestBody Funcionario funcionario) {
-        funcionarioService.updateFuncionario(funcionario);
+    @PutMapping("/funcionario/{id}")
+    public ResponseEntity<Funcionario> updateFuncionario(@RequestBody @Valid Funcionario funcionario, @PathVariable("id") int id) {
+        return ResponseEntity.ok(funcionarioService.updateFuncionario(id, funcionario));
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteFuncionarioId(@PathVariable int id) {
+    @DeleteMapping("/funcionario/{id}")
+    public ResponseEntity<Funcionario> deleteFuncionarioId(@PathVariable("id") int id) {
         funcionarioService.deleteFuncionarioID(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

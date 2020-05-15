@@ -1,7 +1,7 @@
 package com.wipro.petshop.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -10,7 +10,7 @@ public class Compra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private float valorTotal;
     @OneToMany(cascade = CascadeType.ALL)
     private Set<OrdemServico> ordemServicos;

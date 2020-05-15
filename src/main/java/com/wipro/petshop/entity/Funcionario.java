@@ -1,21 +1,21 @@
 package com.wipro.petshop.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private String nome;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private String sobrenome;
     @Column(unique = true)
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private String login;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private String senha;
 
     public int getId() {

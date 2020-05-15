@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Pet {
@@ -15,13 +15,13 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private String nome;
     private int idade;
     private String raca;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private Porte porte;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private Pelagem pelagem;
 
     public int getId() {

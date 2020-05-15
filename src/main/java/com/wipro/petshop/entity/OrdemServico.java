@@ -3,7 +3,7 @@ package com.wipro.petshop.entity;
 import com.wipro.petshop.entity.util.Status;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.sql.Time;
 import java.util.Date;
 import java.util.Set;
@@ -13,19 +13,19 @@ public class OrdemServico {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private Date dia;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private Time horaInicial;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private Time horaEntrega;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private Time horaRetirada;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private boolean pagamento;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private Status status;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private float valor;
 
     @ManyToOne

@@ -3,7 +3,7 @@ package com.wipro.petshop.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.sql.Time;
 
 @Entity
@@ -12,11 +12,11 @@ public class Servico {
     @GeneratedValue
     private int Id;
 
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private String descricao;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private Time duracao;
-    @NotBlank(message = "Campo Obrigatório")
+    @NotNull(message = "Campo Obrigatório")
     private float valorUnitario;
 
     public int getId() {

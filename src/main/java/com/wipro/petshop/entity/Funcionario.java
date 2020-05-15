@@ -1,11 +1,6 @@
 package com.wipro.petshop.entity;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -17,8 +12,8 @@ public class Funcionario {
     private String nome;
     @NotBlank(message = "Campo Obrigatório")
     private String sobrenome;
+    @Column(unique = true)
     @NotBlank(message = "Campo Obrigatório")
-    @UniqueElements
     private String login;
     @NotBlank(message = "Campo Obrigatório")
     private String senha;

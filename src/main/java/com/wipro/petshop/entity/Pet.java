@@ -17,9 +17,7 @@ public class Pet {
 
     @NotBlank(message = "Campo Obrigatório")
     private String nome;
-    @NotBlank(message = "Campo Obrigatório")
     private int idade;
-    @NotBlank(message = "Campo Obrigatório")
     private String raca;
     @NotBlank(message = "Campo Obrigatório")
     private Porte porte;

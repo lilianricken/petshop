@@ -12,7 +12,6 @@ public class Compra {
 
     @NotBlank(message = "Campo Obrigatório")
     private float valorTotal;
-
     @OneToMany(cascade = CascadeType.ALL)
     private Set<OrdemServico> ordemServicos;
 

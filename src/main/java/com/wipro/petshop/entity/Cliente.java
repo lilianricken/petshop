@@ -1,7 +1,5 @@
 package com.wipro.petshop.entity;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -17,19 +15,19 @@ public class Cliente {
     private String nome;
     @NotBlank(message = "Campo Obrigatório")
     private String sobrenome;
+    @Column(length = 11, unique = true)
     @NotBlank(message = "Campo Obrigatório")
-    @UniqueElements
-    private int cpf;
+    private String cpf;
     @NotBlank(message = "Campo Obrigatório")
     @Email
     private String email;
     @NotBlank(message = "Campo Obrigatório")
     private String endereco;
+    @Column(length = 11)
     @NotBlank(message = "Campo Obrigatório")
-    private int telefone;
+    private String telefone;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @NotBlank(message = "Campo Obrigatório")
     private Set<Pet> pets;
 
     public int getId() {
@@ -56,11 +54,11 @@ public class Cliente {
         this.sobrenome = sobrenome;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -80,11 +78,11 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 

@@ -21,7 +21,7 @@ public class FuncionarioController {
         return ResponseEntity.ok(funcionarioService.findAll());
     }
 
-    @GetMapping("/funcionario/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Funcionario> findById(@PathVariable("id") int id) {
         return ResponseEntity.ok(funcionarioService.readFuncionarioID(id));
     }
@@ -31,12 +31,12 @@ public class FuncionarioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(funcionarioService.createFuncionario(funcionario));
     }
 
-    @PutMapping("/funcionario/{id}")
-    public ResponseEntity<Funcionario> updateFuncionario(@RequestBody @Valid Funcionario funcionario, @PathVariable("id") int id) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Funcionario> updateFuncionario(@PathVariable("id") int id, @RequestBody @Valid Funcionario funcionario) {
         return ResponseEntity.ok(funcionarioService.updateFuncionario(id, funcionario));
     }
 
-    @DeleteMapping("/funcionario/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Funcionario> deleteFuncionarioId(@PathVariable("id") int id) {
         funcionarioService.deleteFuncionarioID(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
